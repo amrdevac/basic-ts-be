@@ -1,10 +1,4 @@
 import knex from "knex";
-import { Sequelize } from "sequelize";
-
-const sequelize = new Sequelize("nama_orang", "root", "admin123!", {
-  host: "localhost",
-  dialect: "mysql",
-});
 
 const adapKnex = knex({
   client: "mysql2",
@@ -17,4 +11,4 @@ const adapKnex = knex({
   },
 });
 
-export { sequelize, adapKnex };
+export { adapKnex };
