@@ -2,7 +2,7 @@
 import { Response } from "express";
 import BasicMessage from "./responseMessageEnum";
 
-interface APIResponseType {
+export interface APIResponseType {
   status: boolean;
   message: string;
   restype: string;

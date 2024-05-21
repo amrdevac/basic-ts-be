@@ -5,6 +5,7 @@ import {
   MySQLErrorCodes,
   MySQLErrorMessages,
 } from "../utils/structure/database/errorMessageEnum";
+import { APIResponseType } from "../utils/structure/response/response";
 
 export const logsToFileMiddleware = (
   req: Request,
@@ -22,7 +23,7 @@ export const logsToFileMiddleware = (
   res.send = function (data) {
     let modifiedData;
     try {
-      const parsedData = JSON.parse(data);
+      const parsedData: APIResponseType = JSON.parse(data);
       let devOnly;
 
       if (parsedData.restype == "databaseError") {
@@ -42,7 +43,6 @@ export const logsToFileMiddleware = (
         parsedData.data_error.message = errorMessage;
       }
 
-      
       if (process.env.PRODUCTION == "false") {
         parsedData.data_error = { ...parsedData.data_error, devOnly };
       }
@@ -61,7 +61,7 @@ export const logsToFileMiddleware = (
       method: req.method,
       url: req.originalUrl,
       responseStatus: res.statusCode,
-      responseData: res.locals.body, 
+      responseData: res.locals.body,
     };
 
     const currentDate = new Date();
