@@ -27,23 +27,24 @@ export const logsToFileMiddleware = (
 
       if (parsedData.type == "databaseError") {
         devOnly = {
-          errno: parsedData.error_data.errno,
-          sqlState: parsedData.error_data.sqlState,
-          sqlMessage: parsedData.error_data.sqlMessage,
-          sql: parsedData.error_data.sql,
+          errno: parsedData.data_error.errno,
+          sqlState: parsedData.data_error.sqlState,
+          sqlMessage: parsedData.data_error.sqlMessage,
+          sql: parsedData.data_error.sql,
         };
-        delete parsedData.error_data.errno;
-        delete parsedData.error_data.sqlState;
-        delete parsedData.error_data.sqlMessage;
-        delete parsedData.error_data.sql;
-        const errorCode = parsedData.error_data.code as MySQLErrorCodes;
+        delete parsedData.data_error.errno;
+        delete parsedData.data_error.sqlState;
+        delete parsedData.data_error.sqlMessage;
+        delete parsedData.data_error.sql;
+        const errorCode = parsedData.data_error.code as MySQLErrorCodes;
         const errorMessage =
           MySQLErrorMessages[errorCode] || "Unknown error occurred";
-        parsedData.error_data.message = errorMessage;
+        parsedData.data_error.message = errorMessage;
       }
 
+      
       if (process.env.PRODUCTION == "false") {
-        parsedData.error_data = { ...parsedData.error_data, devOnly };
+        parsedData.data_error = { ...parsedData.data_error, devOnly };
       }
 
       modifiedData = parsedData;
@@ -100,11 +101,6 @@ export const logsToFileMiddleware = (
         }
       });
     });
-    // fs.appendFile(logFilePath, JSON.stringify(logData) + ",\n", (err) => {
-    //   if (err) {
-    //     console.error("Error writing to log file:", err);
-    //   }
-    // });
   });
 
   next();

@@ -5,7 +5,7 @@ import BasicMessage from "./responseMessageEnum";
 interface APIResponseType {
   status: boolean;
   message: string;
-  type: string;
+  restype: string;
   data?: object;
   data_error?: any;
 }
@@ -28,7 +28,7 @@ export class APIResponse {
     this.json(
       {
         status: false,
-        type: "badRequestValidation",
+        restype: "badRequestValidation",
         message: message,
         data: [],
         data_error: dataError,
@@ -43,7 +43,7 @@ export class APIResponse {
   ) => {
     this.json({
       status: true,
-      type: "successSaveRequest",
+      restype: "successSaveRequest",
       message: message,
       data: dataSuccess,
       data_error: [],
@@ -56,7 +56,7 @@ export class APIResponse {
   ) => {
     this.json({
       status: true,
-      type: "successGetData",
+      restype: "successGetData",
       message: message,
       data: dataSuccess,
       data_error: [],
@@ -69,7 +69,7 @@ export class APIResponse {
   ) => {
     this.json({
       status: true,
-      type: "successGetData",
+      restype: "successGetData",
       message: message,
       data: data,
       data_error: [],
@@ -80,7 +80,7 @@ export class APIResponse {
     this.json(
       {
         status: false,
-        type: "notFound",
+        restype: "notFound",
         message: message,
         data: {},
       },
@@ -94,7 +94,7 @@ export class APIResponse {
     this.json(
       {
         status: false,
-        type: "internalServerError",
+        restype: "internalServerError",
         message: message,
         data: {},
       },
@@ -106,7 +106,7 @@ export class APIResponse {
     this.json(
       {
         status: false,
-        type: "authenticationError",
+        restype: "authenticationError",
         message: message,
         data: {},
       },
@@ -118,7 +118,7 @@ export class APIResponse {
     this.json(
       {
         status: false,
-        type: "authorizationError",
+        restype: "authorizationError",
         message: message,
         data: {},
       },
@@ -130,7 +130,7 @@ export class APIResponse {
     this.json(
       {
         status: false,
-        type: "conflictError",
+        restype: "conflictError",
         message: message,
         data: {},
       },
@@ -142,7 +142,7 @@ export class APIResponse {
     this.json(
       {
         status: false,
-        type: "badRequest",
+        restype: "badRequest",
         message: message,
         data: {},
       },
@@ -156,7 +156,7 @@ export class APIResponse {
     this.json(
       {
         status: false,
-        type: "serviceUnavailable",
+        restype: "serviceUnavailable",
         message: message,
         data: {},
       },
@@ -164,14 +164,17 @@ export class APIResponse {
     );
   };
 
-  databaseError = (data: any, message: string = BasicMessage.ERR_DATABASE) => {
+  databaseError = (
+    dataError: any,
+    message: string = BasicMessage.ERR_DATABASE
+  ) => {
     this.json(
       {
         status: false,
-        type: "databaseError",
+        restype: "databaseError",
         message: message,
         data: {},
-        data_error: data,
+        data_error: dataError,
       },
       400
     );
@@ -182,7 +185,7 @@ export class APIResponse {
   ) => {
     this.json({
       status: false,
-      type: "unsupportedMediaType",
+      restype: "unsupportedMediaType",
       message: message,
       data: {},
     });
@@ -192,7 +195,7 @@ export class APIResponse {
     this.json(
       {
         status: false,
-        type: "tooManyRequests",
+        restype: "tooManyRequests",
         message: message,
         data: {},
       },
