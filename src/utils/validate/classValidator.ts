@@ -1,4 +1,5 @@
 import { validate } from "class-validator";
+import { Request } from "express";
 
 interface typeObjBool {
   isError: boolean;
@@ -15,7 +16,7 @@ class ObjBool implements typeObjBool {
   }
 }
 
-export const validation = async (post: any): Promise<typeObjBool> => {
+export const requestValidation = async (post: any) => {
   let returning = new ObjBool();
   return await validate(post).then((errors) => {
     if (errors.length > 0) {
@@ -38,4 +39,10 @@ export const validation = async (post: any): Promise<typeObjBool> => {
       return returning;
     }
   });
+};
+export const requestBinding = async (
+  expressBody: Request,
+  classInstance: any
+) => {
+  return await Object.assign(new classInstance(), expressBody);
 };

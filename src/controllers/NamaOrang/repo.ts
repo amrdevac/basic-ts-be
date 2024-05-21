@@ -4,7 +4,7 @@ import {
 } from "./../../config/databaseErrorHandler";
 import { adapKnex } from "../../config/database";
 import { typeBasicFuncReturn } from "../../utils/structure/general_type";
-import { ConfigFilterTbOrang, tbOrangeRequest, typeTbOrang } from "./model";
+import { ConfigFilterTbOrang, tbOrangeRequest, typeTbOrang } from "./entity";
 import { v4 } from "uuid";
 import repository from "../../utils/basicRepository/defaultRepo";
 import { Knex } from "knex";
@@ -71,7 +71,7 @@ export const saveNamaOrangRepo = async (
       alamat: request.alamat,
     };
 
-    await adapKnex("orang").insert(insertedData);
+    await adapKnex("orang123").insert(insertedData);
     return { data: insertedData, isError: false };
   } catch (error) {
     return databaseErrorHandler(error as knexMysqlErrorType);

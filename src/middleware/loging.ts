@@ -25,7 +25,7 @@ export const logsToFileMiddleware = (
       const parsedData = JSON.parse(data);
       let devOnly;
 
-      if (parsedData.type == "databaseError") {
+      if (parsedData.restype == "databaseError") {
         devOnly = {
           errno: parsedData.data_error.errno,
           sqlState: parsedData.data_error.sqlState,

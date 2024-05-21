@@ -1,6 +1,6 @@
 import { knexMysqlErrorType } from "../../config/databaseErrorHandler";
 import { typeBasicFuncReturn } from "../../utils/structure/general_type";
-import { tbOrangeRequest, typeTbOrang } from "./model";
+import { tbOrangeRequest, typeTbOrang } from "./entity";
 import {
   getNamaOrangRepo,
   saveNamaOrangRepo,
