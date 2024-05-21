@@ -17,9 +17,9 @@ This utility module provides a standardized way to send API responses in an Expr
 
 Include the `APIResponse` class and `BasicMessage` enum in your project.
 
-###### Usage
+##### Usage
 
-######## Importing the Module
+###### Importing the Module
 
 ```typescript
 import { Response } from "express";
@@ -27,7 +27,7 @@ import { APIResponse } from "./utils/structure/response";
 import BasicMessage from "./utils/structure/responseMessageEnum";
 ```
 
-######## Creating an Instance
+###### Creating an Instance
 
 Create an instance of `APIResponse` within your Express route handlers:
 
@@ -40,63 +40,63 @@ app.get("/example", (req, res) => {
 
 ###### Methods
 
-######## `json(responseData: APIResponseType, httpStatus: number = 200)`
+###### `json(responseData: APIResponseType, httpStatus: number = 200)`
 
 Send a custom JSON response with a specified HTTP status code.
 
-######## `badRequestValidation(dataError: any, message: string = BasicMessage.ERR_VALIDATION)`
+###### `badRequestValidation(dataError: any, message: string = BasicMessage.ERR_VALIDATION)`
 
 Send a 400 Bad Request response with validation error details.
 
-######## `successSaveRequest(dataSuccess: any, message: string = BasicMessage.SUCCESS_SAVE)`
+###### `successSaveRequest(dataSuccess: any, message: string = BasicMessage.SUCCESS_SAVE)`
 
 Send a response indicating a successful save operation.
 
-######## `successGetData(dataSuccess: any, message: string = BasicMessage.SUCCESS_GET)`
+###### `successGetData(dataSuccess: any, message: string = BasicMessage.SUCCESS_GET)`
 
 Send a response indicating successful data retrieval.
 
-######## `successDeleteData(data: any, message: string = BasicMessage.SUCCESS_GET)`
+###### `successDeleteData(data: any, message: string = BasicMessage.SUCCESS_GET)`
 
 Send a response indicating successful data deletion.
 
-######## `notFound(message: string = BasicMessage.ERR_NOT_FOUND)`
+###### `notFound(message: string = BasicMessage.ERR_NOT_FOUND)`
 
 Send a 404 Not Found response.
 
-######## `internalServerError(message: string = BasicMessage.ERR_INTERNAL_SERVER)`
+###### `internalServerError(message: string = BasicMessage.ERR_INTERNAL_SERVER)`
 
 Send a 500 Internal Server Error response.
 
-######## `authenticationError(message: string = BasicMessage.ERR_AUTHENTICATION)`
+###### `authenticationError(message: string = BasicMessage.ERR_AUTHENTICATION)`
 
 Send a 401 Unauthorized response due to authentication failure.
 
-######## `authorizationError(message: string = BasicMessage.ERR_AUTHORIZATION)`
+###### `authorizationError(message: string = BasicMessage.ERR_AUTHORIZATION)`
 
 Send a 403 Forbidden response due to authorization failure.
 
-######## `conflictError(message: string = BasicMessage.ERR_CONFLICT)`
+###### `conflictError(message: string = BasicMessage.ERR_CONFLICT)`
 
 Send a 409 Conflict response.
 
-######## `badRequest(message: string = BasicMessage.ERR_BAD_REQUEST)`
+###### `badRequest(message: string = BasicMessage.ERR_BAD_REQUEST)`
 
 Send a 400 Bad Request response.
 
-######## `serviceUnavailable(message: string = BasicMessage.ERR_SERVICE_THIRD_PARTY)`
+###### `serviceUnavailable(message: string = BasicMessage.ERR_SERVICE_THIRD_PARTY)`
 
 Send a 503 Service Unavailable response.
 
-######## `databaseError(dataError: any, message: string = BasicMessage.ERR_DATABASE)`
+###### `databaseError(dataError: any, message: string = BasicMessage.ERR_DATABASE)`
 
 Send a 500 Internal Server Error response due to a database error.
 
-######## `unsupportedMediaType(message: string = BasicMessage.ERR_UNSUPPORTED_MEDIA_TYPE)`
+###### `unsupportedMediaType(message: string = BasicMessage.ERR_UNSUPPORTED_MEDIA_TYPE)`
 
 Send a 415 Unsupported Media Type response.
 
-######## `tooManyRequests(message: string = BasicMessage.ERR_TOO_MANY_REQUESTS)`
+###### `tooManyRequests(message: string = BasicMessage.ERR_TOO_MANY_REQUESTS)`
 
 Send a 429 Too Many Requests response.
 
