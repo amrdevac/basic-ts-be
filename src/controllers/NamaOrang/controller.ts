@@ -1,4 +1,3 @@
-import { saveNamaOrangRepo } from "./repo";
 import { Request, Response } from "express";
 import { validation } from "../../utils/validate/classValidator";
 import { tbOrangeRequest, typeTbOrang } from "./model";
@@ -21,7 +20,7 @@ export const saveNamaOrang = async (req: Request, res: Response) => {
   const { data, isError } = await validation(request);
   console.log(data);
 
-  if (isError) return response.successSaveRequest(data);
+  if (isError) return response.badRequestValidation(data);
 
   const resultSave = await saveNewNamaOrangService(request);
   if (resultSave.isError) return response.databaseError(resultSave);

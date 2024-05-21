@@ -7,7 +7,7 @@ interface APIResponseType {
   message: string;
   type: string;
   data?: object;
-  error_data?: object;
+  data_error?: any;
 }
 
 export class APIResponse {
@@ -31,7 +31,7 @@ export class APIResponse {
         type: "badRequestValidation",
         message: message,
         data: [],
-        error_data: dataError,
+        data_error: dataError,
       },
       400
     );
@@ -46,7 +46,7 @@ export class APIResponse {
       type: "successSaveRequest",
       message: message,
       data: dataSuccess,
-      error_data: [],
+      data_error: [],
     });
   };
 
@@ -59,7 +59,7 @@ export class APIResponse {
       type: "successGetData",
       message: message,
       data: dataSuccess,
-      error_data: [],
+      data_error: [],
     });
   };
 
@@ -72,7 +72,7 @@ export class APIResponse {
       type: "successGetData",
       message: message,
       data: data,
-      error_data: [],
+      data_error: [],
     });
   };
 
@@ -171,7 +171,7 @@ export class APIResponse {
         type: "databaseError",
         message: message,
         data: {},
-        error_data: data,
+        data_error: data,
       },
       400
     );

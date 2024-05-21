@@ -23,7 +23,7 @@ export const validation = async (post: any): Promise<typeObjBool> => {
 
       errors.map((error) => {
         let dataError = {
-          property: "error.property",
+          property: error.property,
           message: Object.values(error.constraints ?? ""),
         };
         arrayError.push(dataError);
