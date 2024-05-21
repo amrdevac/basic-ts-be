@@ -44,7 +44,7 @@ export const logsToFileMiddleware = (
       }
 
       if (process.env.PRODUCTION == "false") {
-        parsedData.data_error = { ...parsedData.data_error, devOnly };
+        parsedData.data_error.devOnly = devOnly;
       }
 
       modifiedData = parsedData;
